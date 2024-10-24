@@ -1,12 +1,14 @@
 
 import './App.css'
-import { Landing } from './pages/Landing'
+//import { Landing } from './pages/Landing'
+import { LogIn } from './pages/LogIn'
 
 function App() {
 
   return (
     <>
-    <Landing/>
+    <LogIn/>
+
 {/* 
     <BrowserRouter>
       <Routes>
