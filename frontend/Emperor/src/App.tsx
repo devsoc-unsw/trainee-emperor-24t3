@@ -1,21 +1,21 @@
 
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-//import { Landing } from './pages/Landing'
-import { LogIn } from './pages/LogIn'
+import { Landing } from './pages/Landing'
+import { Box } from '@mui/material'
 
 function App() {
 
   return (
-    <>
-    <LogIn/>
-
-{/* 
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<p>hello</p>} />
-      </Routes>
-    </BrowserRouter> */}
-    </>
+    <Box sx={{
+      minHeight: '100vh'
+    }}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Landing />} />
+        </Routes>
+      </BrowserRouter>
+    </Box>
   )
 }
 
