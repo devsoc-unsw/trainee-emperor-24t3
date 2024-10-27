@@ -8,6 +8,8 @@ export const LogIn = () => {
             <Box sx = {{
                 minHeight: '100vh',
                 backgroundColor: 'white',
+                margin: '0',
+                padding: '0',
             }}>
                 <Box sx = {{
                     position: 'absolute',
@@ -15,7 +17,7 @@ export const LogIn = () => {
                     left: '10px',
                 }}>
                     <Typography variant="h5">
-                        <p>Synciety</p>
+                        <p className="kanit">Synciety</p>
                     </Typography>
                 </Box>
 
@@ -26,7 +28,7 @@ export const LogIn = () => {
                     border: 2,
                     overflow: 'hidden',
                     width: '50%',
-                    height: '500px',
+                    height: '450px',
                     margin: '0',
                     top: '50%',
                     left: '50%',
@@ -37,10 +39,9 @@ export const LogIn = () => {
                         backgroundColor: '#EAEBEB',
                         color: 'black',
                         width: '50%',
-                        height: '500px',
                     }}>
                         <Typography variant="h5">
-                            <p>Login</p>   
+                            <p className="kanit">Login</p>   
                         </Typography>
                         <Typography variant="h6">
                             <p>Username</p>   
@@ -55,7 +56,6 @@ export const LogIn = () => {
                         color: 'black',
                         borderLeft: 2,
                         width: '50%',
-                        height: '500px',
                         textAlign: 'center',
 
                     }}>
@@ -64,10 +64,14 @@ export const LogIn = () => {
                         }}>
                             <p>Hello</p>   
                         </Typography>
-                        <Typography variant="subtitle1">
+                        <Typography variant="subtitle1" sx = {{
+                            color: 'white'
+                        }}>
                             <p>New User?</p>   
                         </Typography>
-                        <Typography variant="h6">
+                        <Typography variant="h6" sx = {{
+                            color: 'white'
+                        }}>
                             <p>Sign Up</p>   
                         </Typography>
                     </Box>

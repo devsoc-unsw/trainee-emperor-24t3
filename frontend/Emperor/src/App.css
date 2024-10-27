@@ -11,3 +11,11 @@ body {
   min-height: 100vh;
 
 }
+
+@font-face {
+  font-family: kanit;
+  src: url(../public/Kanit-Regular.ttf);
+}
+.kanit {
+  font-family: kanit;
+}
