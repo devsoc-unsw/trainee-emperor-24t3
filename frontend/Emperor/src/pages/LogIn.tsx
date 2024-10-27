@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box';
+import { Box, Typography } from "@mui/material"
 
 
 export const LogIn = () => {
@@ -14,7 +14,9 @@ export const LogIn = () => {
                     top: '0',
                     left: '10px',
                 }}>
-                    <p>Synciety</p>
+                    <Typography variant="h5">
+                        <p>Synciety</p>
+                    </Typography>
                 </Box>
 
                 <Box sx = {{
@@ -37,9 +39,15 @@ export const LogIn = () => {
                         width: '50%',
                         height: '500px',
                     }}>
-                        <p>Login</p>
-                        <p>Username</p>
-                        <p>Password</p>
+                        <Typography variant="h5">
+                            <p>Login</p>   
+                        </Typography>
+                        <Typography variant="h6">
+                            <p>Username</p>   
+                        </Typography>
+                        <Typography variant="h6">
+                            <p>Password</p>   
+                        </Typography>
                     </Box>
                     <Box sx = {{
                         p: 2,
@@ -48,10 +56,20 @@ export const LogIn = () => {
                         borderLeft: 2,
                         width: '50%',
                         height: '500px',
+                        textAlign: 'center',
+
                     }}>
-                        <p>Hello</p>
-                        <p>New User?</p>
-                        <p>Sign Up</p>
+                        <Typography variant="h3" sx = {{
+                            color: 'white'
+                        }}>
+                            <p>Hello</p>   
+                        </Typography>
+                        <Typography variant="subtitle1">
+                            <p>New User?</p>   
+                        </Typography>
+                        <Typography variant="h6">
+                            <p>Sign Up</p>   
+                        </Typography>
                     </Box>
                 </Box>
             </Box>
