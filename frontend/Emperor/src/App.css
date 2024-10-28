@@ -19,3 +19,11 @@ body {
 .kanit {
   font-family: kanit;
 }
+
+@font-face {
+  font-family: exo;
+  src: url(../public/Exo-Regular.ttf);
+}
+.exo {
+  font-family: exo;
+}

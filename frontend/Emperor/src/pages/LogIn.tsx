@@ -1,7 +1,15 @@
-import { Box, Typography } from "@mui/material"
+import { Box, Typography, Button, createTheme, ThemeProvider, TextField } from "@mui/material"
 
 
 export const LogIn = () => {
+    const purple = createTheme({
+        palette: {
+            primary: {
+                main: '#AA7CD2',
+                contrastText: 'white',
+            },
+        },
+    })
 
     return (
         <>
@@ -10,6 +18,7 @@ export const LogIn = () => {
                 backgroundColor: 'white',
                 margin: '0',
                 padding: '0',
+                border: '0',
             }}>
                 <Box sx = {{
                     position: 'absolute',
@@ -27,7 +36,7 @@ export const LogIn = () => {
                     borderRadius: '10px',
                     border: 2,
                     overflow: 'hidden',
-                    width: '50%',
+                    width: '40%',
                     height: '450px',
                     margin: '0',
                     top: '50%',
@@ -44,11 +53,21 @@ export const LogIn = () => {
                             <p className="kanit">Login</p>   
                         </Typography>
                         <Typography variant="h6">
-                            <p>Username</p>   
+                            <p className = "exo">Username</p>   
                         </Typography>
+                        <TextField variant="outlined"/>
                         <Typography variant="h6">
-                            <p>Password</p>   
+                            <p className = "exo">Password</p>   
                         </Typography>
+                        <ThemeProvider theme = {purple}>
+                            <Button variant = "contained" disableElevation sx = {{
+                                width: '80%',
+                                height: '15%',
+                                margin: 'auto',
+                                display: 'flex',
+                                color: 'black',
+                            }}>Sign In</Button>
+                        </ThemeProvider>
                     </Box>
                     <Box sx = {{
                         p: 2,
@@ -62,7 +81,7 @@ export const LogIn = () => {
                         <Typography variant="h3" sx = {{
                             color: 'white'
                         }}>
-                            <p>Hello</p>   
+                            <p>HELLO</p>   
                         </Typography>
                         <Typography variant="subtitle1" sx = {{
                             color: 'white'
