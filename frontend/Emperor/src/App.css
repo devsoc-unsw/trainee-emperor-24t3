@@ -14,7 +14,7 @@ body {
 
 @font-face {
   font-family: kanit;
-  src: url(../public/Kanit-Regular.ttf);
+  src: url(/Kanit-Regular.ttf);
 }
 .kanit {
   font-family: kanit;
@@ -22,8 +22,24 @@ body {
 
 @font-face {
   font-family: exo;
-  src: url(../public/Exo-Regular.ttf);
+  src: url(/Exo-Regular.ttf);
 }
 .exo {
   font-family: exo;
+}
+
+@font-face {
+  font-family: yantraLight;
+  src: url(/Yantramanav-Light.ttf);
+}
+.yantraLight {
+  font-family: yantraLight;
+}
+
+@font-face {
+  font-family: yantraBold;
+  src: url(/Yantramanav-Bold.ttf);
+}
+.yantraBold {
+  font-family: yantraBold;
 }
