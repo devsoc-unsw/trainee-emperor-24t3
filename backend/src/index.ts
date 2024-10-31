@@ -1,9 +1,10 @@
-import express, {Request, Response, NextFunction} from 'express'
+import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors'
 import { InputError, AccessError } from './error';
 
 const PORT = 5000;
 
+// const express = require('express')
 const app = express();
 
 app.use(cors({
@@ -30,6 +31,11 @@ const errorHandler = (fn: (req: Request, res: Response, next: NextFunction) => P
     }
   };
 
+// Test route
+app.get('/echo', (req, res) => {
+  res.json('Hello world');
+})
+
 app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
+  console.log(`Listening on port ${PORT}`);
 })
