@@ -10,7 +10,10 @@ export const Calendar = () => {
                     backgroundColor: 'orange',
                     height: '12vh',
                     wrap: 'nowrap',
-                    display: 'flex'
+                    display: 'flex',
+                    margin: '0',
+                    padding: '0',
+
                 }}>
 
                     <Box>
@@ -85,7 +88,15 @@ export const Calendar = () => {
                     }}>
                         <p>Insert Icons Here</p>
                     </Box>
+                </Box>
 
+                <Box sx = {{
+                    height: '88vh',
+                    width: '15vw',
+                    backgroundColor: 'blue',
+                    display: 'flex'
+                }}>
+                    <p>Side bar goes here</p>
                 </Box>
             </Box>
         </>
