@@ -4,6 +4,7 @@ import './App.css'
 import { Landing } from './pages/Landing'
 import { Box } from '@mui/material'
 import { LogIn } from './pages/LogIn'
+import { Calendar } from './pages/Calendar'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/LogIn' element={<LogIn />} />
+          <Route path='/Calendar' element={<Calendar />} />
         </Routes>
       </BrowserRouter>
     </Box>
