@@ -14,7 +14,8 @@ export const Landing = () => {
   });
 
   const [textInput, setTextInput] = useState("");
-  const [email, setEmail] = useState("");
+  // Technically we can just use the text input
+  // const [email, setEmail] = useState("");
 
   return (
     <>
@@ -62,6 +63,7 @@ export const Landing = () => {
         <TextField 
           size="small" 
           onChange={(event) => {
+            // Keep track of text input
             setTextInput(event.target.value);
           }}
           sx={{
@@ -72,9 +74,24 @@ export const Landing = () => {
       <ThemeProvider theme={orange}>
         <Button 
         variant="contained" 
-        onClick={() => {
-          setEmail(textInput);
-          
+        onClick={async () => {
+          // Send to backend:
+          // Consider making this a helper function
+          const options = {
+            method: "POST",
+            headers: {
+              'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: textInput,
+            }),
+          }
+
+          const response = await fetch(`http://localhost:8888/subscribe`, options);
+          const data = await response.json();
+          if (data.error) {
+            console.log(data.error)
+          }
         }}
         sx={{
           marginLeft: '1rem',
