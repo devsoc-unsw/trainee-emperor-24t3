@@ -1,5 +1,6 @@
 import { Box, Button, createTheme, TextField, ThemeProvider, Typography } from "@mui/material"
 import Image from "../assets/5047210.png"
+import Navbar from "../components/Navbar"
 
 export const Landing = () => {
   const orange = createTheme({
@@ -12,6 +13,8 @@ export const Landing = () => {
   })
 
   return (
+    <>
+    <Navbar/>
     <Box
       sx={{
           backgroundColor: '#AA7CD2',
@@ -64,5 +67,6 @@ export const Landing = () => {
       </ThemeProvider>
       </Box>
     </Box>
+    </>
   )
 }

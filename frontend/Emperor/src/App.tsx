@@ -4,6 +4,7 @@ import './App.css'
 import { Landing } from './pages/Landing'
 import { Box } from '@mui/material'
 import DemoPage from './pages/DemoPage'
+import { LogIn } from './pages/LogIn'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/demo' element={<DemoPage />} />
+          <Route path='/LogIn' element={<LogIn />} />
         </Routes>
       </BrowserRouter>
     </Box>
