@@ -1,6 +1,7 @@
 import { Box, Button, createTheme, TextField, ThemeProvider, Typography } from "@mui/material"
 import Image from "../assets/5047210.png"
 import Navbar from "../components/Navbar"
+import { useState } from "react";
 
 export const Landing = () => {
   const orange = createTheme({
@@ -10,7 +11,10 @@ export const Landing = () => {
         contrastText: 'white',
       },
     },
-  })
+  });
+
+  const [textInput, setTextInput] = useState("");
+  const [email, setEmail] = useState("");
 
   return (
     <>
@@ -55,13 +59,24 @@ export const Landing = () => {
         </Box>
       </Box>
       <Box>
-        <TextField size="small" sx={{
+        <TextField 
+          size="small" 
+          onChange={(event) => {
+            setTextInput(event.target.value);
+          }}
+          sx={{
           backgroundColor: "white",
           borderRadius: "5px"
         }}
         />
       <ThemeProvider theme={orange}>
-        <Button variant="contained" sx={{
+        <Button 
+        variant="contained" 
+        onClick={() => {
+          setEmail(textInput);
+          
+        }}
+        sx={{
           marginLeft: '1rem',
         }}>Subscribe</Button>
       </ThemeProvider>
