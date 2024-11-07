@@ -76,7 +76,7 @@ export const Landing = () => {
         variant="contained" 
         onClick={async () => {
           // Send to backend:
-          // Consider making this a helper function
+          // Consider making this a helper
           const options = {
             method: "POST",
             headers: {
@@ -87,7 +87,7 @@ export const Landing = () => {
             }),
           }
 
-          const response = await fetch(`http://localhost:8888/subscribe`, options);
+          const response = await fetch(`http://localhost:5000/subscribe`, options);
           const data = await response.json();
           if (data.error) {
             console.log(data.error)
