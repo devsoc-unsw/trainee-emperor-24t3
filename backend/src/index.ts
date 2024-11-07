@@ -36,6 +36,17 @@ app.get('/echo', (req, res) => {
   res.json('Hello world');
 })
 
+// Subscribe email
+app.post('/subscribe', (req, res) => {
+  // put email in database
+  const email = req.body.email;
+  console.log(email)
+
+  // send back "OK"
+  res.status(200);
+  res.json("OK");
+})
+
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 })
