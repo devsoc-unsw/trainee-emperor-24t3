@@ -1,8 +1,16 @@
 # Synciety by Emperor-24T3
 
+If you want to run both frontend and backend, run the commands in different terminals
+
+## Frontend
 Remember to `npm install` inside the folder `/frontend/Emperor` whenever you `git pull`
 
 To run, run `npm run dev`
+
+## Backend
+Remember to `npm install` inside the folder `/backend` whenever you `git pull`
+
+To run, run `npm start`
 
 ## Git commands
 Pulling:
