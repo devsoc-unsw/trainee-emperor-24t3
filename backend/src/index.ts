@@ -1,11 +1,43 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors'
 import { InputError, AccessError } from './error';
+import firebaseConfig from '../fireBaseConfig.json';
+import {
+  initializeApp
+} from 'firebase/app';
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from 'firebase/firestore';
+import {
+  readFileSync
+} from 'fs';
 
 const PORT = 5000;
 
-// const express = require('express')
 const app = express();
+
+// Setting up database
+const {
+  apiKey,
+  authDomain,
+  projectId,
+  storageBucket,
+  messagingSenderId,
+  appId
+} = JSON.parse(readFileSync('./fireBaseConfig.json', 'utf-8'));
+
+const firebaseApp = initializeApp({
+  apiKey,
+  authDomain,
+  projectId,
+  storageBucket,
+  messagingSenderId,
+  appId
+});
+
+const db = getFirestore(firebaseApp);
 
 app.use(cors({
     origin: (origin, callback) => {
@@ -37,10 +69,14 @@ app.get('/echo', (req, res) => {
 })
 
 // Subscribe email
-app.post('/subscribe', (req, res) => {
+app.post('/subscribe', async (req, res) => {
   // put email in database
   const email = req.body.email;
   console.log(email)
+
+  // Add to database
+  const newCollect = collection(db, 'subscribers');
+  await addDoc(newCollect, {email: email});
 
   // send back "OK"
   res.status(200);

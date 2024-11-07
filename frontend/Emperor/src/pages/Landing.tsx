@@ -14,6 +14,7 @@ export const Landing = () => {
   });
 
   const [textInput, setTextInput] = useState("");
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
   // Technically we can just use the text input
   // const [email, setEmail] = useState("");
 
@@ -59,7 +60,13 @@ export const Landing = () => {
             }}/>
         </Box>
       </Box>
-      <Box>
+      {emailSubmitted ? 
+        <Box> 
+          <Typography>
+            Thanks for subscribing to our mailing list
+          </Typography>
+        </Box>
+        : <Box>
         <TextField 
           size="small" 
           onChange={(event) => {
@@ -92,12 +99,13 @@ export const Landing = () => {
           if (data.error) {
             console.log(data.error)
           }
+          setEmailSubmitted(true);
         }}
         sx={{
           marginLeft: '1rem',
         }}>Subscribe</Button>
       </ThemeProvider>
-      </Box>
+      </Box>}
     </Box>
     </>
   )
