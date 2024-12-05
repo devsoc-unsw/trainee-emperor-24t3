@@ -1,4 +1,4 @@
-import { Box, Typography, Button, Grid2 } from "@mui/material"
+import { Box, Typography, Button } from "@mui/material"
 import '../App.css'
 import '../pages/CalendarGrid'
 import { CalendarGrid } from "../pages/CalendarGrid"
