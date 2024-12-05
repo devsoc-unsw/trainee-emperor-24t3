@@ -1,5 +1,7 @@
 import { Box, Button, createTheme, TextField, ThemeProvider, Typography } from "@mui/material"
 import Image from "../assets/5047210.png"
+import Navbar from "../components/Navbar"
+import { useState } from "react";
 
 export const Landing = () => {
   const orange = createTheme({
@@ -9,9 +11,16 @@ export const Landing = () => {
         contrastText: 'white',
       },
     },
-  })
+  });
+
+  const [textInput, setTextInput] = useState("");
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  // Technically we can just use the text input
+  // const [email, setEmail] = useState("");
 
   return (
+    <>
+    <Navbar/>
     <Box
       sx={{
           backgroundColor: '#AA7CD2',
@@ -51,18 +60,53 @@ export const Landing = () => {
             }}/>
         </Box>
       </Box>
-      <Box>
-        <TextField size="small" sx={{
+      {emailSubmitted ? 
+        <Box> 
+          <Typography>
+            Thanks for subscribing to our mailing list
+          </Typography>
+        </Box>
+        : <Box>
+        <TextField 
+          size="small" 
+          onChange={(event) => {
+            // Keep track of text input
+            setTextInput(event.target.value);
+          }}
+          sx={{
           backgroundColor: "white",
           borderRadius: "5px"
         }}
         />
       <ThemeProvider theme={orange}>
-        <Button variant="contained" sx={{
+        <Button 
+        variant="contained" 
+        onClick={async () => {
+          // Send to backend:
+          // Consider making this a helper
+          const options = {
+            method: "POST",
+            headers: {
+              'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: textInput,
+            }),
+          }
+
+          const response = await fetch(`http://localhost:5000/subscribe`, options);
+          const data = await response.json();
+          if (data.error) {
+            console.log(data.error)
+          }
+          setEmailSubmitted(true);
+        }}
+        sx={{
           marginLeft: '1rem',
         }}>Subscribe</Button>
       </ThemeProvider>
-      </Box>
+      </Box>}
     </Box>
+    </>
   )
 }
