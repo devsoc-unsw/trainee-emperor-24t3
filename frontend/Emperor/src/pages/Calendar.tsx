@@ -1,7 +1,7 @@
 import { Box, Typography, Button } from "@mui/material"
 import '../App.css'
-import '../pages/CalendarGrid'
-import { CalendarGrid } from "../pages/CalendarGrid"
+import '../components/CalendarGrid'
+import CalendarGrid from "../components/CalendarGrid"
 
 export const Calendar = () => {
     return (
@@ -14,7 +14,7 @@ export const Calendar = () => {
                     display: 'flex',
                     margin: '0',
                     padding: '0',
-
+                    backgroundColor: 'white'
                 }}>
 
                     <Box>
@@ -97,7 +97,7 @@ export const Calendar = () => {
                     height: '88vh',
                     width: '15vw',
                     position: 'absolute',
-                    backgroundColor: 'black',
+                    backgroundColor: 'white',
                 }}>
                     <Box sx = {{
                         width: '15vw',
@@ -167,11 +167,11 @@ export const Calendar = () => {
                     height: '88vh',
                     width: '85vw',
                     position: 'absolute',
-                    backgroundColor: 'purple',
+                    backgroundColor: 'white',
                     display: 'inline',
                     marginLeft: '15vw',
                 }}>
-                    <CalendarGrid></CalendarGrid>
+                    <CalendarGrid />
                 </Box>
             </Box>
         </>
