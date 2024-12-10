@@ -1,5 +1,7 @@
 import { Box, Typography, Button } from "@mui/material"
 import '../App.css'
+import '../components/CalendarGrid'
+import CalendarGrid from "../components/CalendarGrid"
 
 export const Calendar = () => {
     return (
@@ -7,13 +9,12 @@ export const Calendar = () => {
             <Box>
                 <Box sx = {{
                     width: '100vw',
-                    backgroundColor: 'orange',
                     height: '12vh',
                     wrap: 'nowrap',
                     display: 'flex',
                     margin: '0',
                     padding: '0',
-
+                    backgroundColor: 'white'
                 }}>
 
                     <Box>
@@ -21,7 +22,7 @@ export const Calendar = () => {
                             margin: 'auto',
                             border: '0',
                             display: 'flex',
-                            marginLeft: '2vw'
+                            marginLeft: '4.5vw'
                         }}>
                             <p className="kanit">Synciety</p>
                         </Typography>
@@ -40,7 +41,9 @@ export const Calendar = () => {
                             display: 'flex',
                             margin: 'auto',
                             marginRight: '10px',
-                        }}>Today</Button>
+                            textTransform: 'none',
+                            boxShadow: '2',
+                        }}><p className="exo" style = {{margin: '0'}}>Today</p></Button>
 
                         <Box sx = {{
                             maxWidth: '15px',  
@@ -93,10 +96,82 @@ export const Calendar = () => {
                 <Box sx = {{
                     height: '88vh',
                     width: '15vw',
-                    backgroundColor: 'blue',
-                    display: 'flex'
+                    position: 'absolute',
+                    backgroundColor: 'white',
                 }}>
-                    <p>Side bar goes here</p>
+                    <Box sx = {{
+                        width: '15vw',
+                        height: '100%',
+                        display: 'inline',
+                    }}>
+                        <Button sx = {{
+                            width: '70%',
+                            height: '5%',
+                            display: 'flex',
+                            margin: 'auto',
+                            marginTop: '10px',                            borderRadius: '7px',
+                            border: '3px',
+                            backgroundColor: 'white',
+                            marginBottom: '15px',
+                            textTransform: 'none',
+                            boxShadow: '2',
+                        }}>
+                            <img src='../src/assets/plus.png' alt="Plus sign" style = {{
+                                width: '10%',
+                                paddingRight: '15px',
+                            }}></img>
+                            <p className = 'exo' style = {{
+                                marginRight: '0',
+                                color: 'black',
+                            }}>
+                                Create
+                            </p>
+                        </Button>
+                        
+                        <Box sx = {{display: 'inline', marginLeft: '10%'}}>
+                            <Button sx = {{
+                                backgroundColor: 'white',
+                                color: 'black',
+                                textTransform: 'none',
+                                width: '30%',
+                                height: '5%',
+                                boxShadow: '2',
+                            }}>
+                                <img src='../src/assets/plus.png' alt="Plus sign" style = {{
+                                    width: '20%',
+                                    paddingRight: '15px',
+                                }}></img>
+                                <p className="exo">Add</p>
+                            </Button>
+                        </Box>
+                        <Box sx = {{display: 'inline', marginLeft: '15%'}}>
+                            <Button sx = {{
+                                backgroundColor: 'white',
+                                color: 'black',
+                                textTransform: 'none',
+                                width: '35%',
+                                height: '5%',
+                                boxShadow: '3',
+                            }}>
+                                <img src='../src/assets/minus.png' alt="Plus sign" style = {{
+                                    width: '20%',
+                                    paddingRight: '5px',
+                                }}></img>
+                                <p className="exo">Remove</p>
+                            </Button>
+                        </Box>
+                    </Box>
+                </Box>
+
+                <Box sx = {{
+                    height: '88vh',
+                    width: '85vw',
+                    position: 'absolute',
+                    backgroundColor: 'white',
+                    display: 'inline',
+                    marginLeft: '15vw',
+                }}>
+                    <CalendarGrid />
                 </Box>
             </Box>
         </>
