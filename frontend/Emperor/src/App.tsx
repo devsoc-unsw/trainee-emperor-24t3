@@ -6,6 +6,7 @@ import { Box } from '@mui/material'
 import DemoPage from './pages/DemoPage'
 import { LogIn } from './pages/LogIn'
 import { Calendar } from './pages/Calendar'
+import { SignUp } from './pages/SignUp'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path='/demo' element={<DemoPage />} />
           <Route path='/LogIn' element={<LogIn />} />
           <Route path='/Calendar' element={<Calendar />} />
+          <Route path='/SignUp' element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </Box>
