@@ -2,6 +2,9 @@ import { Box, Typography, Button } from "@mui/material"
 import '../App.css'
 import '../components/CalendarGrid'
 import CalendarGrid from "../components/CalendarGrid"
+// import React from 'react';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 export const Calendar = () => {
     return (
@@ -104,29 +107,62 @@ export const Calendar = () => {
                         height: '100%',
                         display: 'inline',
                     }}>
-                        <Button sx = {{
-                            width: '70%',
-                            height: '5%',
-                            display: 'flex',
-                            margin: 'auto',
-                            marginTop: '10px',                            borderRadius: '7px',
-                            border: '3px',
-                            backgroundColor: 'white',
-                            marginBottom: '15px',
-                            textTransform: 'none',
-                            boxShadow: '2',
-                        }}>
-                            <img src='../src/assets/plus.png' alt="Plus sign" style = {{
-                                width: '10%',
-                                paddingRight: '15px',
-                            }}></img>
-                            <p className = 'exo' style = {{
-                                marginRight: '0',
-                                color: 'black',
+                        <Popup trigger=
+                            {<Button sx = {{
+                                width: '70%',
+                                height: '5%',
+                                display: 'flex',
+                                margin: 'auto',
+                                marginTop: '10px',                            borderRadius: '7px',
+                                border: '3px',
+                                backgroundColor: 'white',
+                                marginBottom: '15px',
+                                textTransform: 'none',
+                                boxShadow: '2',
                             }}>
-                                Create
-                            </p>
-                        </Button>
+                                <img src='../src/assets/plus.png' alt="Plus sign" style = {{
+                                    width: '10%',
+                                    paddingRight: '15px',
+                                }}></img>
+                                <p className = 'exo' style = {{
+                                    marginRight: '0',
+                                    color: 'black',
+                                }}>
+                                    Create
+                                </p>
+                            </Button>}
+                            position="right center">
+                            <div>
+                                <input type="event" id="event" placeholder="New Event Title" style={{
+                                    borderRadius: '30px',
+                                    border: '0',
+                                    width: '80%',
+                                    height: '6%',
+                                    padding: '8px',
+                                    display: 'flex',
+                                    margin: 'auto',
+                                }}/>
+                                <input type="event-desc" id="event-desc" style={{
+                                    borderRadius: '30px',
+                                    border: '0',
+                                    width: '80%',
+                                    height: '6%',
+                                    padding: '8px',
+                                    display: 'flex',
+                                    margin: 'auto',
+                                }}/>
+                                <input type="link" id="link" style={{
+                                    borderRadius: '30px',
+                                    border: '0',
+                                    width: '80%',
+                                    height: '6%',
+                                    padding: '8px',
+                                    display: 'flex',
+                                    margin: 'auto',
+                                }}/>
+                            </div>
+                            <button>Save</button>
+                        </Popup>
                         
                         <Box sx = {{display: 'inline', marginLeft: '10%'}}>
                             <Button sx = {{
