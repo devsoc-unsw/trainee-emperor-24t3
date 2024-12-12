@@ -13,6 +13,7 @@ import {
 import {
   readFileSync
 } from 'fs';
+import { login } from './server';
 
 const PORT = 5000;
 
@@ -82,6 +83,14 @@ app.post('/subscribe', async (req, res) => {
   res.status(200);
   res.json("OK");
 })
+
+
+// auth functions
+app.post('/auth/login', errorHandler(async (req, res) => {
+  const { email, password } = req.body
+  const token = await login(email, password)
+  res.json(token)
+}))
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
