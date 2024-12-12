@@ -13,7 +13,7 @@ import {
 import {
   readFileSync
 } from 'fs';
-import { login } from './server';
+import { login, signup } from './server';
 
 const PORT = 5000;
 
@@ -86,9 +86,15 @@ app.post('/subscribe', async (req, res) => {
 
 
 // auth functions
+app.post('/auth/register', errorHandler(async (req, res) => {
+  const { user, password } = req.body
+  const token = await signup(user, password)
+  res.json(token)
+}))
+
 app.post('/auth/login', errorHandler(async (req, res) => {
-  const { email, password } = req.body
-  const token = await login(email, password)
+  const { user, password } = req.body
+  const token = await login(user, password)
   res.json(token)
 }))
 
