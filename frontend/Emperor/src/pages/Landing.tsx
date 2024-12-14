@@ -75,7 +75,8 @@ export const Landing = () => {
           }}
           sx={{
           backgroundColor: "white",
-          borderRadius: "5px"
+          borderRadius: "5px",
+          marginLeft: '17vw'
         }}
         />
       <ThemeProvider theme={orange}>

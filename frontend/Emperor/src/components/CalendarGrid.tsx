@@ -1,7 +1,7 @@
 import { DataGrid } from "@mui/x-data-grid";
 import '../App.css';
 
-function CalendarGrid() {
+const CalendarGrid = () => {
   const columns = [
     { field: "Time", headerName: "", width: 150 },
     { field: "Monday", headerName: "M", width: 150 },
