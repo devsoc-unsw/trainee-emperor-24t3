@@ -5,10 +5,11 @@ import {
     collection,
     addDoc,
     setDoc,
-    doc
+    doc,
+    updateDoc
   } from 'firebase/firestore';
 import { readFileSync } from 'fs';
-import { createUserWithEmailAndPassword, getAuth, initializeAuth, signInWithEmailAndPassword } from "firebase/auth"
+import { AuthErrorCodes, createUserWithEmailAndPassword, getAuth, initializeAuth, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth"
 
 const {
   apiKey,
@@ -34,19 +35,28 @@ auth = getAuth()
 const db = getFirestore(firebaseApp);
 
 const signup = async(email:string, password: string) => {
-    createUserWithEmailAndPassword(auth, email, password).then(() => {
-        const user = auth.currentUser
-
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+    
         const user_data = {
-            email: email,
-            password: password,
-            lastLogin: Date.now()
+          email: email,
+          password: password,
+          lastLogin: Date.now()
+        };
+    
+        // Store user data in Firestore (using `setDoc` since it's a new user)
+        await setDoc(doc(db, 'users', user.uid), user_data);
+    
+      } catch (error: any) {
+        if (error.code === AuthErrorCodes.INVALID_EMAIL) {
+          throw new InputError('Invalid email format.');
+        } else if (error.code === AuthErrorCodes.WEAK_PASSWORD) {
+          throw new InputError('Password is too weak.');
+        } else {
+          throw new AccessError('Unable to create user.');
         }
-
-        setDoc(doc(db, 'users/' + user?.uid), user_data);
-    }).catch(() => {
-        throw new AccessError('Invalid credentials')
-    })
+      }
 }
 
 const login = async(email:string, password:string) => {
@@ -60,44 +70,33 @@ const login = async(email:string, password:string) => {
     if (!email === null) {
         throw new InputError('Invalid email');
     } else {
-        signInWithEmailAndPassword(auth, email, password).then(() => {
-            const user = auth.currentUser
-
+        try {
+            const userCreds = await signInWithEmailAndPassword(auth, email, password)
+            
+            const user = userCreds.user
+    
             const user_data = {
-                email: email,
-                password: password,
                 lastLogin: Date.now()
             }
 
-            if (user_data.password !== password) {
+            await updateDoc(doc(db, 'users/' + user?.uid), user_data);
+        }
+        catch {
+            if (password !== AuthErrorCodes.INVALID_PASSWORD) {
                 throw new InputError('Invalid password');
+            } else {
+                throw new AccessError('Invalid credentials')
             }
-
-            setDoc(doc(db, 'users/' + user?.uid), user_data);
-
-        }).catch(() => {
-            throw new AccessError('Invalid credentials')
-        })
-        // const res: {password: string} | null = await prisma.user.findUnique({
-        //     where: {
-        //         id: uId.id,
-        //       },
-        //       select: {
-        //         password: true,
-        //       },
-        // })
-
-        // if (res) {
-        //     if (res.password !== password) {
-        //         throw new InputError('Invalid password');
-        //     } else {
-        //         const token = jwt.sign({ uId }, JWT_SECRET, { algorithm: 'HS256', });
-        //         return { token };
-        //     }
-        // } else {
-        //     throw new Error('Login failed...');
-        // }
+        }
     }
 }
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        console.log(`User ${user.email} has logged in`)
+    } else {
+        console.log('User has logged out')
+    }
+})
 
 export { signup, login }
