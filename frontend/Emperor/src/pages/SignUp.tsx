@@ -1,9 +1,21 @@
 import { Box, Typography, Button, createTheme, ThemeProvider} from "@mui/material"
 import '../App.css'
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from "@mui/material"
 
 
 export const SignUp = () => {
+    const [open, setOpen] = useState(false)
+
+    const handleOpen = () => {
+        setOpen(true)
+    };
+
+    const handleClose = () => {
+        setOpen(false)
+    };
+
     const navigate = useNavigate();
 
     const purple = createTheme({
@@ -116,7 +128,7 @@ export const SignUp = () => {
                             marginTop: '20px',
                             display: 'flex',
                         }}>
-                            <Button className="yantraLight" style = {{
+                            <Button className="yantraLight" onClick={handleOpen} style = {{
                                 fontSize: '10px',
                                 marginTop: 'auto',
                                 marginBottom: 'auto',
@@ -124,6 +136,29 @@ export const SignUp = () => {
                                 marginRight: 'auto',
                                 color: '#0788FF'
                             }}>Terms and Conditions</Button>
+                            <Dialog
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="alert-dialog-title"
+                                aria-describedby="alert-dialog-description"
+                            >
+                                <DialogTitle id="alert-dialog-title">
+                                    {"Use Synciety's location service?"}
+                                </DialogTitle>
+                                <DialogContent>
+                                    <DialogContentText id="alert-dialog-description">
+                                        Do you trust Synciety to handle and look after your credentials?
+                                    </DialogContentText>
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={handleClose}>
+                                        Disagree
+                                    </Button>
+                                    <Button onClick={handleClose} autoFocus>
+                                        Agree
+                                    </Button>
+                                </DialogActions>
+                            </Dialog>
                         </Box>
                     </Box>
                     <Box sx = {{
