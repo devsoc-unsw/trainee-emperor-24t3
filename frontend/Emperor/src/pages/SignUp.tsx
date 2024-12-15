@@ -97,7 +97,9 @@ export const SignUp = () => {
                                 marginLeft: '1.5vw',
                             }}>Password</p>   
                         </Typography>
-                        <input type="password" style={{
+                        <input 
+                          type="password" 
+                          style={{
                             borderRadius: '30px',
                             border: '0',
                             width: '80%',
@@ -106,9 +108,7 @@ export const SignUp = () => {
                             display: 'flex',
                             margin: 'auto',
                         }}/>
-                        <div style = {{
-                            margin: '40px'
-                        }}></div>
+                        <div style = {{margin: '40px'}}/>
                         <ThemeProvider theme = {purple}>
                             <Button variant = "contained" disableElevation onClick={calendarLink} sx = {{
                                 width: '80%',
@@ -169,15 +169,19 @@ export const SignUp = () => {
                         width: '50%',
                         textAlign: 'center',
                     }}>
-                        <Typography variant="h3" sx = {{
+                        <Typography 
+                          variant="h3" 
+                          sx = {{
                             color: 'white'
                         }}>
-                            <p className="yantraBold" style = {{
+                            <p className="yantraBold" 
+                              style = {{
                                 fontSize: '50px',
                                 letterSpacing: '2px',
                             }}>WELCOME</p>   
                         </Typography>
-                        <Typography variant="subtitle1" sx = {{
+                        <Typography variant="subtitle1" 
+                        sx = {{
                             color: 'white'
                         }}>
                             <p className = "yantraLight">Have an account?</p>   
