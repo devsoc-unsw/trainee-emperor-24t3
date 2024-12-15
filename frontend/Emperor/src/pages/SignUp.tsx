@@ -97,7 +97,7 @@ export const SignUp = () => {
                                 marginLeft: '1.5vw',
                             }}>Password</p>   
                         </Typography>
-                        <input type="text" style={{
+                        <input type="password" style={{
                             borderRadius: '30px',
                             border: '0',
                             width: '80%',
