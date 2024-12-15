@@ -1,8 +1,11 @@
 import { Box, Typography, Button, createTheme, ThemeProvider, Checkbox } from "@mui/material"
 import '../App.css'
+import { useNavigate } from "react-router-dom"
 
 
 export const LogIn = () => {
+    const navigate = useNavigate()
+
     const purple = createTheme({
         palette: {
             primary: {
@@ -11,6 +14,14 @@ export const LogIn = () => {
             },
         }
     })
+
+    const signupLink = () => {
+        navigate('/signup')
+    }
+
+    const calendarLink = () => {
+        navigate('/Calendar')
+    }
 
     return (
         <>
@@ -87,7 +98,7 @@ export const LogIn = () => {
                             margin: '40px'
                         }}></div>
                         <ThemeProvider theme = {purple}>
-                            <Button variant = "contained" disableElevation sx = {{
+                            <Button variant = "contained" disableElevation onClick={calendarLink} sx = {{
                                 width: '80%',
                                 height: '15%',
                                 margin: 'auto',
@@ -148,7 +159,8 @@ export const LogIn = () => {
                             borderColor: 'black',
                             borderRadius: '15px',
                             marginTop: '20px',
-                        }}>
+                        }}
+                        onClick={signupLink}>
                             <p className = "yantraLight" style = {{
                             margin: '2px'
                             }}>
